@@ -14,12 +14,17 @@ Node** boardConstructor(int dimensions, Exit exit){
     int i;
     int c;
     
-    Node** board  = (Node **)malloc(sizeof(Node *) * dimensions);
-    Node* board[0] = (Node *)malloc(sizeof(Node) * dimensions * dimensions);
+   Node** board;
     
-    for(i = 0; i < dimensions; i++){
-        arr[i] = (*arr + dimensions * i);
-    }
+    // allocation
+    board = new Node*[dimensions];
+    for(int i = 0; i < dimensions; i++)
+        board[i] = new Node[dimensions];
+    
+    // initialization
+    for(int c = 0; c < dimensions; c++)
+        for(int i = 0; i < dimensions; i++)
+            board[i][c] = 0;
     
     //initialize values in Node,
     //(1,0) first component is N-S, second is E-W
