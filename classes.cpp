@@ -28,6 +28,7 @@ public:
 };
 
 class Exit {
+public:
     locationX;
     locationY;
 };
