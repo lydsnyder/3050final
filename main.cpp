@@ -30,20 +30,6 @@ int main(int argc, char** argv) {
     int* numberArray;
     char buffer [100];
     
-    //pFile = fopen ("myfile.txt" , "r");
-    //if (pFile == NULL) 
-    //{    
-    //    perror ("Error opening file");
-    //}
-/*    else
-    {
-        while ( ! feof (pFile) )
-        {
-            if ( fgets (buffer , 100 , pFile) == NULL ) break;
-            fputs (buffer , stdout);
-        }
- 
-    }*/
     numberArray = (int*)malloc(sizeof(int) * 15);
     inputFile = fopen(argv[1], "r");
     if(!inputFile)
