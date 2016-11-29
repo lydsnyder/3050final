@@ -36,11 +36,8 @@ int main(int argc, char** argv) {
     }*/
     
     fclose (pFile);
-<<<<<<< Updated upstream
-=======
     
     //here's a difference
->>>>>>> Stashed changes
 
     return 0;
 }
