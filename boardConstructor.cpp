@@ -8,7 +8,7 @@
 
 #include "boardConstructor.hpp"
 
-Node** boardConstructor(int dimensions){
+Node** boardConstructor(int dimensions, Exit exit){
     
     //malloc values
     int i;
@@ -40,7 +40,44 @@ Node** boardConstructor(int dimensions){
     board[0][dimensions-1].visualRepresentation = '7';
     board[dimensions-1][dimensions-1].visualRepresentation = BOTTOM RIGHT CORNER;
     board[dimensions-1][0].visualRepresentation = 'L';
+    board[exit.locationX][exit.locationY].visualRepresentation = 'D';
     
     return board;
+    
+}
+
+Object* objectConstructor(int locationX, int locationY, int speed, int directionX, int directionY){
+    
+    Object* obj =(Object*)malloc(sizeof(Object*) * 1);
+    
+    obj.locationX = locationX;
+    obj.locationY = locationY;
+    obj.directionX = directionX;
+    obj.directionY = directionY;
+    obj.speed = speed;
+    
+    return obj;
+    
+    
+}
+
+Robot* robotConstructor(int x, int y){
+    
+    Robot* robo = (Robot*)malloc(sizeof(Robot*) * 1);
+    
+    robo.locationX = x;
+    robo.locationY = y;
+    
+    return robo;
+}
+
+Exit* exitConstructor(int locationX, int locationY){
+    
+    Exit* exit = (Exit*)malloc(sizeof(Exit*) * 1);
+    
+    exit.locationX = x;
+    exit.locationY = y;
+    
+    return exit;
     
 }
