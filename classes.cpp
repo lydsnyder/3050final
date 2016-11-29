@@ -12,32 +12,29 @@
 //separate from Obstacle, because if obstacle hits wall it will change speeds... robot will not?
 class Robot {
 public:
-    int location;   // Length of a box
-    int speed;  // Breadth of a box
-    int directionLeft;
-    int directionRight;
-    virtual public move(int RobotLocation, int obtacleLocation, Node** gameBoard);   // Height of a box
+    int locationX;
+    int locationY; // Length of a box
+    virtual public moveRobot(int RobotLocation, int obtacleLocation, Node** gameBoard);   // Height of a box
 };
 
 class Obstacle {
 public:
-    int location;   // Length of a box
+    int locationX;
+    int locationY; // Length of a box
     int speed;  // Breadth of a box
-    int directionLeft;
-    int directionRight;
-    virtual public move(Node** gameBoard);   // Height of a box
+    int directionX;
+    int directionY;
+    virtual public moveObstacle(Node** gameBoard);   // Height of a box
+};
+
+class Exit {
+    locationX;
+    locationY;
 };
 
 class Node {
 public:
-    int NorthEdge;
-    int NortheastEdge;
-    int EastEdge;
-    int SoutheastEdge;
-    int SouthEdge;
-    int SouthwestEdge;
-    int WestEdge;
-    int NorthwestEdge;
     int horizontalFlag;
     int verticalFlag;
+    char visualRepresentation; //vertical wall = | , horizontal wall = - , door = D, robot = 8, obstacle O
 };
