@@ -6,12 +6,8 @@
 //  Copyright © 2016 Evan Teters. All rights reserved.
 //
 
-#include <iostream>
-#include <cstdlib>
-#include <stdlib.h>
-#include <cstdio>
+
 #include "classes.h"
-#include "constructor.cpp"
 
 using namespace std;
 
@@ -19,17 +15,18 @@ int* parseFile(FILE* fp);
 
 
 int main(int argc, const char * argv[]) {
-  
+    printf("In the beginning\n");
     //Parsing would happen
     FILE * pFile;
     FILE* inputFile;
     int* numberArray;
-    char buffer [100];
+    //char buffer [100];
     
     numberArray = (int*)malloc(sizeof(int) * 15);
-    inputFile = fopen(argv[1], "r");
+    inputFile = fopen(argv[0], "r");
     if(!inputFile)
     {
+        printf(" there was nothing");
         //Input file unable to be opened.
         return 0;
     }
@@ -46,19 +43,37 @@ int main(int argc, const char * argv[]) {
     //fclose (pFile);
     //PARSING DONE !!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Exit* exit = exitConstructor(numberArray[1], numberArray[2]);
+    Exit* exit= (Exit*)malloc(sizeof(Exit*) * 1);
+    
+    exit->exitConstructor(numberArray[1], numberArray[2]);
     
     Node** board = boardConstructor(numberArray[0], exit);
     
-    Obstacle* object1 = objectConstructor(numberArray[5], numberArray[6], numberArray[7], numberArray[8], numberArray[9]);
+   
+    Obstacle* object1 = (Obstacle*)malloc(sizeof(Obstacle*) * 1); //= objectConstructor(numberArray[5], numberArray[6], numberArray[7], numberArray[8], numberArray[9]);
     
-    Obstacle* object2 = objectConstructor(numberArray[10], numberArray[11], numberArray[12], numberArray[13], numberArray[14]);
+    object1->obstacleConstructor(numberArray[5], numberArray[6], numberArray[7], numberArray[8], numberArray[9]);
     
     
     
-    Robot* robo = robotConstructor(numberArray[1], numberArray[2]);
+   // Obstacle* object2 = objectConstructor(numberArray[10], numberArray[11], numberArray[12], numberArray[13], numberArray[14]);
+    
+    
+    Obstacle* object2 = (Obstacle*)malloc(sizeof(Obstacle*) * 1); //= objectConstructor(numberArray[5], numberArray[6], numberArray[7], numberArray[8], numberArray[9]);
+    
+    object2->obstacleConstructor(numberArray[10], numberArray[11], numberArray[12], numberArray[13], numberArray[14]);
+    
+    
+    
+    Robot* robo  = (Robot*)malloc(sizeof(Robot*) * 1); //robotConstructor(numberArray[1], numberArray[2]);
+    
+    robo->robotConstructor(numberArray[1], numberArray[2]);
+    
     
     //Move :D
+    
+    
+    
     
     int i=0;
     for(i=0;i<numberArray[0];i++) {
@@ -83,8 +98,8 @@ int main(int argc, const char * argv[]) {
     
     
     
-    int* parseFile(FILE* fp)
-{
+int* parseFile(FILE* fp)
+    {
         char* line = NULL;
         char *p;
         size_t nbytes = 0;
@@ -128,4 +143,4 @@ int main(int argc, const char * argv[]) {
         }
         free(line);
         return numberArray;
-}
+    }
